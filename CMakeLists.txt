@@ -6,7 +6,7 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 
 set(CMAKE_CXX_FLAGS "-Wall -Wextra")
-#set(CMAKE_BUILD_TYPE Debug)
+set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
@@ -15,7 +15,7 @@ include_directories(/usr/include)
 include_directories(src)
 include_directories(header)
 
-set(SOURCES src/main.cpp src/astar.cpp)
-set(HEADERS header/main.hpp header/astar.hpp)
+set(SOURCES src/main.cpp src/astar.cpp src/pstar.cpp)
+set(HEADERS header/main.hpp header/astar.hpp header/pstar.hpp)
 
 add_executable(astar ${SOURCES} ${HEADERS}) 

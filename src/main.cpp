@@ -1,9 +1,5 @@
 #include "main.hpp"
 
-inline bool operator < (const Node& lhs, const Node& rhs){//We need to overload "<" to put our struct into a set
-    return lhs.fCost < rhs.fCost;
-}
-
 int main(){
     //Create the map
     bool map[MAP_WIDTH][MAP_HEIGHT];
@@ -21,7 +17,7 @@ int main(){
     std::cout << "Map created" << std::endl;
 
     //Create the A* object
-    Astar astar;
+    PStar astar;
     std::cout << "A* object created" << std::endl;
 
     //Set the map
@@ -33,7 +29,7 @@ int main(){
 
     auto start = std::chrono::high_resolution_clock::now();
 
-    std::vector<Node> path =astar.calculate_path(0, 0, 299, 199);
+    std::vector<Point> path = astar.calculate_path(1, 1, 298, 198);
 
     auto finish = std::chrono::high_resolution_clock::now();
 
