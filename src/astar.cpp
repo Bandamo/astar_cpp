@@ -186,6 +186,15 @@ std::vector<Node> Astar::calculate_path(int startX, int startY, int endX, int en
         }
         path.push_back(start);
         std::cout << "Number of sqrt: " << count_sqrt << std::endl;
+
+
+        std::ofstream myfile;
+        myfile.open ("closed_list.txt");
+        for (auto node : closedList){
+            myfile << node.x << " " << node.y << std::endl;
+        }
+        myfile.close();
+
         return path;
     }
     else{

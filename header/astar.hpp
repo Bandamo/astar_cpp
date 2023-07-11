@@ -12,8 +12,8 @@ struct Node{
     int y;
     int parentX;
     int parentY;
-    int gCost;
-    int hCost;
+    long gCost;
+    long hCost;
     float fCost;
 };
 

@@ -1,6 +1,4 @@
 #include "main.hpp"
-#include <random>
-#include <fstream>
 
 inline bool operator < (const Node& lhs, const Node& rhs){//We need to overload "<" to put our struct into a set
     return lhs.fCost < rhs.fCost;
@@ -11,9 +9,7 @@ int main(){
     bool map[MAP_WIDTH][MAP_HEIGHT];
     for(int x = 0; x < MAP_WIDTH; x++){
         for(int y = 0; y < MAP_HEIGHT; y++){
-            // Random false
-            float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-            if (r < 0.4){
+            if (sqrt((x-100)*(x-100) + (y-100)*(y-100)) < 80 && sqrt((x-100)*(x-100) + (y-100)*(y-100)) > 60 && y > 100){
                 map[x][y] = false;
             }
             else{
