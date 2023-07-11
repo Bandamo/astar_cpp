@@ -5,7 +5,7 @@ int main(){
     bool map[MAP_WIDTH][MAP_HEIGHT];
     for(int x = 0; x < MAP_WIDTH; x++){
         for(int y = 0; y < MAP_HEIGHT; y++){
-            if (sqrt((x-100)*(x-100) + (y-100)*(y-100)) < 80 && sqrt((x-100)*(x-100) + (y-100)*(y-100)) > 60 && y > 100){
+            if (sqrt((x-200)*(x-200) + (y-100)*(y-100)) < 80 && sqrt((x-200)*(x-200) + (y-100)*(y-100)) > 60 && y > 100){
                 map[x][y] = false;
             }
             else{

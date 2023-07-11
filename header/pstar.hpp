@@ -5,13 +5,6 @@
 #define MAP_WIDTH 300
 #define MAP_HEIGHT 200
 
-struct NodePstar{
-    int x;
-    int y;
-    NodePstar* parent;
-    float cost;
-};
-
 struct Point{
     int x;
     int y;
@@ -26,7 +19,8 @@ class PStar{
         void set_map(bool map[MAP_WIDTH][MAP_HEIGHT]);
 
     private:
-        NodePstar map[MAP_WIDTH][MAP_HEIGHT];
+        int map_cost[MAP_WIDTH][MAP_HEIGHT];
+        bool map[MAP_WIDTH][MAP_HEIGHT];
         bool get_cost(Point p);
 };
 
