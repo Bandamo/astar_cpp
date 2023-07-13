@@ -2,8 +2,8 @@
 #define PSTAR_HPP
 
 #include "main.hpp"
-#define MAP_WIDTH 300
-#define MAP_HEIGHT 200
+#define MAP_WIDTH 900
+#define MAP_HEIGHT 600
 
 struct Point{
     int x;

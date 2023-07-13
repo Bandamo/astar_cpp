@@ -52,7 +52,7 @@ std::vector<Point> PStar::calculate_path(int startX, int startY, int endX, int e
     this->map_cost[startX][startY] = 0;
 
     while (running){
-        std::cout << "Calculating cost... " << count << std::endl;
+        //std::cout << "Calculating cost... " << count << std::endl;
         count = 0;
         running = false;
         for (int x = 1; x < MAP_WIDTH-1; x++){
@@ -64,13 +64,27 @@ std::vector<Point> PStar::calculate_path(int startX, int startY, int endX, int e
                 if (still_running){count ++;}
             }
         }
+        if (!running){continue;}
+        for (int x = MAP_WIDTH-2; x > 1; x--){
+            for (int y = MAP_HEIGHT-2; y > 1; y--){
+                tmp.x = x;
+                tmp.y = y;
+                still_running = this->get_cost(tmp);
+                running = running || still_running;
+                if (still_running){count ++;}
+            }
+        }
     }
-    std::cout << "Cost calculated" << std::endl;
+    //std::cout << "Cost calculated" << std::endl;
     std::vector<Point> path;
 
     Point current;
     current.x = endX;
     current.y = endY;
+    if (this->map_cost[current.x][current.y] == MAP_HEIGHT * MAP_WIDTH){
+        std::cout << "No path found" << std::endl;
+        return path;
+    }
     path.push_back(current);
     while (current.x != startX || current.y != startY){
         int best_cost = MAP_HEIGHT * MAP_WIDTH;
@@ -79,17 +93,19 @@ std::vector<Point> PStar::calculate_path(int startX, int startY, int endX, int e
             for (int dy = -1; dy <= 1; dy++){
                 tmp.x = current.x + dx;
                 tmp.y = current.y + dy;
+                if (tmp.x < 0 || tmp.x >= MAP_WIDTH || tmp.y < 0 || tmp.y >= MAP_HEIGHT){
+                    continue;
+                }
                 if (this->map_cost[tmp.x][tmp.y] < best_cost){
                     best_cost = this->map_cost[tmp.x][tmp.y];
                     best_point = tmp;
                 }
             }
         }
-        std::cout << "Best point : " << best_point.x << " " << best_point.y << std::endl;
         current = best_point;
         path.push_back(current);
     }
-    std::cout << "Path calculated" << std::endl;
+    //std::cout << "Path calculated" << std::endl;
     return path;
 }
 
